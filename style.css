@@ -1,0 +1,214 @@
+:root {
+    --main-green: #1a9f53;
+    --green-dark: #157c42;
+    --green-light: #e8f5e9;
+    --bg-light: #f4f7f9;
+    --bg-dark: #1e1e1e;
+    --text-dark: #ffffff;
+    --text-light: #000000;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--main-green);
+    padding: 8px 10px;
+    color: white;
+    gap: 10px;
+}
+
+.toolbar select,
+.toolbar button,
+.toolbar input[type="color"],
+.toolbar input[type="file"] {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* color */
+.toolbar button[title] {
+    font-size: 16px;
+    background-color: white;
+    color: #2e7d32;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 6px 10px;
+    transition: background-color 0.2s;
+}
+
+.toolbar button[title]:hover {
+    background-color: #e0f2f1;
+}
+
+
+.toolbar button {
+    background-color: white;
+    color: var(--main-green);
+    font-weight: bold;
+}
+
+.toolbar button:hover {
+    background-color: #ddd;
+}
+
+.toolbar-icon-button {
+    background-color: white;
+    color: var(--main-green);
+    font-size: 16px;
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toolbar-icon-button:hover {
+    background-color: #ccc;
+}
+
+.sheet-container {
+    padding: 10px;
+}
+
+.spreadsheet {
+    display: grid;
+    grid-template-columns: 40px repeat(20, 100px);
+    margin: 10px 0;
+    background: white;
+    border-radius: 6px;
+    overflow: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cell,
+.header,
+.row-header {
+    border: 1px solid #ccc;
+    padding: 6px;
+    box-sizing: border-box;
+    min-height: 24px;
+}
+
+.header {
+    background: #f0f0f0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.row-header {
+    background: #f0f0f0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cell[contenteditable] {
+    background: white;
+    outline: none;
+}
+
+body.dark .spreadsheet {
+    background: #2c2c2c;
+}
+
+body.dark .header,
+body.dark .row-header {
+    background: #444;
+    color: white;
+}
+
+body.dark .cell {
+    background: #333;
+    color: white;
+}
+
+/* New Sheet Button */
+.new-sheet-btn {
+    background-color: #fff;
+    color: var(--main-green);
+    font-weight: bold;
+    border: 2px solid var(--main-green);
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.new-sheet-btn:hover {
+    background-color: var(--green-dark);
+    color: white;
+}
+
+/* Dark mode toggle slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+    vertical-align: middle;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--green-dark);
+}
+
+input:checked+.slider:before {
+    transform: translateX(22px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .spreadsheet {
+        grid-template-columns: 30px repeat(10, 80px);
+    }
+}

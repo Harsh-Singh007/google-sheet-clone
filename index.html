@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excel Sheet Clone</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="toolbar">
+        <div class="toolbar-left">
+            <button class="toolbar-icon-button" onclick="document.execCommand('copy')" title="Copy">📋</button>
+            <button class="toolbar-icon-button" onclick="document.execCommand('cut')" title="Cut">✂️</button>
+            <button class="toolbar-icon-button" onclick="document.execCommand('paste')" title="Paste">📄</button>
+
+            <select id="fontSelect">
+                <option value="monospace">MonoSpace</option>
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Georgia">Georgia</option>
+            </select>
+
+            <select id="fontSizeSelect">
+                <option value="10">10</option>
+                <option value="12" selected>12</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+            </select>
+
+            <button onclick="format('bold')" title="Bold">𝐁</button>
+            <button onclick="format('italic')" title="Italic">𝐼</button>
+            <button onclick="format('underline')" title="Underline">𝑈</button>
+            <button onclick="format('justifyLeft')" title="Left Align">⬅️</button>
+            <button onclick="format('justifyCenter')" title="Center Align">↔️</button>
+            <button onclick="format('justifyRight')" title="Right Align">➡️</button>
+            <button onclick="format('removeFormat')" title="Clear Formatting">❌</button>
+
+            <button title="Text Color" onclick="document.getElementById('textColorPicker').click()">🎨🅰️</button>
+            <input type="color" id="textColorPicker" style="display:none" onchange="applyColor(this.value, 'color')" />
+
+            <button title="Background Color" onclick="document.getElementById('bgColorPicker').click()">🖌️⬛</button>
+            <input type="color" id="bgColorPicker" style="display:none"
+                onchange="applyColor(this.value, 'backgroundColor')" />
+
+        </div>
+
+        <div class="toolbar-right">
+            <button class="new-sheet-btn" onclick="addNewSheet()">➕ Sheet</button>
+
+            <input type="file" id="importFile" accept=".csv" style="display: none;" />
+            <button id="importBtn" title="Import CSV">📂 Import</button>
+            <button onclick="exportToCSV()" title="Export CSV">📤 Export</button>
+
+            <label class="switch">
+                <input type="checkbox" id="toggleMode">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
+
+    <div class="sheet-container" id="sheetContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
